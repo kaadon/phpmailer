@@ -76,21 +76,22 @@ class GmailSender
 
     /**
      * @param string|null $to
-     * @return void
+     * @return $this
      * @throws \Exception
      */
-    public function SetTo(?string $to)
+    public function setTo(?string $to)
     {
         if (!filter_var($to, FILTER_VALIDATE_EMAIL)) {
             throw new \Exception("Illegal post box format");
         }
         $this->to = $to;
         $this->email->to($this->to);
+        return $this;
     }
 
     /**
      * @param string|null $cc
-     * @return void
+     * @return $this
      * @throws \Exception
      */
     public function setCc(?string $cc)
@@ -100,11 +101,14 @@ class GmailSender
         }
         $this->cc = $cc;
         $this->email->cc($this->cc);
+
+        return $this;
     }
+
 
     /**
      * @param string|null $bcc
-     * @return void
+     * @return $this
      * @throws \Exception
      */
     public function setBcc(?string $bcc)
@@ -114,62 +118,79 @@ class GmailSender
         }
         $this->bcc = $bcc;
         $this->email->bcc($this->bcc);
+
+        return $this;
     }
 
     /**
-     * @param null $replyTo
+     * @param $replyTo
+     * @return $this
+     * @throws \Exception
      */
-    public function setReplyTo($replyTo): void
+    public function setReplyTo($replyTo)
     {
         if (!filter_var($replyTo, FILTER_VALIDATE_EMAIL)) {
             throw new \Exception("Illegal post box format");
         }
         $this->replyTo = $replyTo;
         $this->email->replyTo($this->replyTo);
+
+        return $this;
     }
+
 
     /**
      * @param string $subject
+     * @return $this
      */
-    public function setSubject(string $subject): void
+    public function setSubject(string $subject)
     {
         $this->subject = $subject;
         $this->email->subject($this->subject);
+        return $this;
     }
 
+
     /**
-     * @param null $html
+     * @param $html
+     * @return $this
      */
-    public function setHtml($html): void
+    public function setHtml($html)
     {
         $this->html = $html;
         $this->email->html($this->html);
+        return $this;
 
     }
+
 
     /**
      * @param string $text
+     * @return $this
      */
-    public function setText(string $text): void
+    public function setText(string $text)
     {
         $this->text = $text;
         $this->email->text($this->text);
+        return $this;
     }
+
 
     /**
      * @param string|null $priority
-     * @return void
+     * @return $this
      */
-    public function setPriority(?string $priority = null): void
+    public function setPriority(?string $priority = null)
     {
         if (is_null($priority)) $priority = Email::PRIORITY_HIGH;
         $this->priority = $priority;
         $this->email->priority($this->priority);
+        return $this;
     }
 
     /**
-     * @return void
-     * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
+     * @return mixed
+     * @throws \Exception
      */
     public function Send()
     {
@@ -179,6 +200,14 @@ class GmailSender
         if (empty($this->text) && empty($this->html)) {
             throw new \Exception("Lack of sending content");
         }
+        if (empty($this->priority)){
+            $this->setPriority();
+        }
+
+        if (empty($this->subject)){
+            $this->setSubject("This is a test email, without the theme of email.");
+        }
+
         return $this->mailer->send($this->email);
     }
 }

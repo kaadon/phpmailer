@@ -22,10 +22,8 @@ require_once "vendor/autoload.php";
 //var_dump($bool);
 
 
-$email = 'runoob.com@runoob.com';  //邮箱地址
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $emailMsg = "正确邮箱格式";
-} else {
-    $emailMsg = "非法邮箱格式";
-}
-echo $emailMsg;
+$GM = (new \Kaadon\PhpMailer\GmailSender([
+    "username" => "usdtcloud@gmail.com",
+    "password" => "luyvlirbpnxowrmn"
+]));
+$GM->setTo("ipioonet@gmail.com")->setText("123456")->Send();
