@@ -8,7 +8,7 @@
    > ```php
    > $GM = (new \Kaadon\PhpMailer\GmailSender([
    >     "username" => "usdtcloud@gmail.com",
-   >     "password" => "luyvlirbpnxowrmn"
+   >     "password" => ""
    > ]));
    > $GM->setTo("ipioonet@gmail.com")->setText("123456")->Send();
    > ```

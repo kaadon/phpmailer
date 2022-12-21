@@ -4,7 +4,7 @@ require_once "vendor/autoload.php";
 //use Symfony\Component\Mailer\Bridge\Google\Transport\GmailSmtpTransport as Transport;
 //use Symfony\Component\Mailer\Mailer;
 //
-//$transport = new Transport("usdtcloud@gmail.com","luyvlirbpnxowrmn");
+//$transport = new Transport("usdtcloud@gmail.com","");
 //$mailer = new Mailer($transport);
 ////
 //$email = (new \Symfony\Component\Mime\Email())
@@ -24,6 +24,6 @@ require_once "vendor/autoload.php";
 
 $GM = (new \Kaadon\PhpMailer\GmailSender([
     "username" => "usdtcloud@gmail.com",
-    "password" => "luyvlirbpnxowrmn"
+    "password" => ""
 ]));
 $GM->setTo("ipioonet@gmail.com")->setText("123456")->Send();
