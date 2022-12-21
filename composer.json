@@ -1,0 +1,40 @@
+{
+    "name": "kaadon/phpmailer",
+    "type": "library",
+    "description": "Kaadon phpmailer for PHP",
+    "keywords": ["phpmailer"],
+    "homepage": "http://developer.kaadon.com/",
+    "license": "MIT",
+    "require": {
+        "PHP": ">=7.2",
+        "symfony/mailer": "^5.4",
+        "symfony/google-mailer": "^5.4"
+    },
+    "authors": [
+        {
+            "name": "Kaadon",
+            "email": "kaadon.com@gmail.com",
+            "homepage": "https://kaadon.com/"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Kaadon\\PhpMailer\\": "src"
+        },
+        "files": [
+            "helper.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kaadon\\PhpMailer\\Test\\": "tests"
+        }
+    },
+    "extra": {
+        "think":{
+            "config":{
+                "kaadon": "config/kaadon.php"
+            }
+        }
+    }
+}
