@@ -10,7 +10,7 @@
    >     "username" => "usdtcloud@gmail.com",
    >     "password" => ""
    > ]));
-   > $GM->setTo("ipioonet@gmail.com")->setText("123456")->Send();
+   > $GM->setTo("kaadon.com@gmail.com")->setText("123456")->Send();
    > ```
 
    
