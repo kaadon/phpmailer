@@ -7,7 +7,7 @@
     "license": "MIT",
     "require": {
         "PHP": ">=7.2",
-        "symfony/google-mailer": "~5.4"
+        "symfony/google-mailer": "^5.4"
     },
     "authors": [
         {
