@@ -5,6 +5,7 @@ namespace Kaadon\PhpMailer;
 use Symfony\Component\Mailer\Bridge\Google\Transport\GmailSmtpTransport as Transport;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mime\Email;
+use Twig\Loader\FilesystemLoader;
 
 /**
  *
@@ -163,6 +164,14 @@ class GmailSender
 
     }
 
+    public function setTwigTemplates(string $path, $filename, array $context = [], array $options = [])
+    {
+        $loader = new FilesystemLoader($path);
+        $twig   = new \Twig\Environment($loader, $options);
+        $this->html = $twig->render($filename, $context);
+        $this->email->html($this->html);
+        return $this;
+    }
 
     /**
      * @param string $text
@@ -200,11 +209,11 @@ class GmailSender
         if (empty($this->text) && empty($this->html)) {
             throw new \Exception("Lack of sending content");
         }
-        if (empty($this->priority)){
+        if (empty($this->priority)) {
             $this->setPriority();
         }
 
-        if (empty($this->subject)){
+        if (empty($this->subject)) {
             $this->setSubject("This is a test email, without the theme of email.");
         }
 
