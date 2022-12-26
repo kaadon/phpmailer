@@ -14,5 +14,5 @@ $GM = (new \Kaadon\PhpMailer\GmailSender([
     "username" => "usdtcloud@gmail.com",
     "password" => "luyvlirbpnxowrmn"
 ]));
-$GM->setTo("ipioonet@gmail.com")->setSubject("服务续费通知")->setTwigTemplates("/Volumes/SourceData/composer/phpmailer/twig_templates","server.html",$context)->Send();
+$GM->setTo("ipioonet@gmail.com")->setSubject("服务续费通知")->setTwigTemplates("/Volumes/SourceData/composer/phpmailer/twig_templates","google.html",$context)->Send();
 
