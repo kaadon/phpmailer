@@ -164,7 +164,18 @@ class GmailSender
 
     }
 
-    public function setTwigTemplates(string $path, $filename, array $context = [], array $options = [])
+    /**
+     * 设置模板
+     * @param string $path //模板目录
+     * @param $filename  //模板文件
+     * @param array $context //传递参数
+     * @param array $options //传递配置
+     * @return $this
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function setTwigTemplates(string $path,string $filename, array $context = [], array $options = [])
     {
         $loader = new FilesystemLoader($path);
         $twig   = new \Twig\Environment($loader, $options);
@@ -186,6 +197,7 @@ class GmailSender
 
 
     /**
+     *
      * @param string|null $priority
      * @return $this
      */
