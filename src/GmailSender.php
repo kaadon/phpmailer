@@ -167,7 +167,7 @@ class GmailSender
     /**
      * 设置模板
      * @param string $path //模板目录
-     * @param $filename  //模板文件
+     * @param $filename //模板文件
      * @param array $context //传递参数
      * @param array $options //传递配置
      * @return $this
@@ -175,10 +175,10 @@ class GmailSender
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function setTwigTemplates(string $path,string $filename, array $context = [], array $options = [])
+    public function setTwigTemplates(string $path, string $filename, array $context = [], array $options = [])
     {
-        $loader = new FilesystemLoader($path);
-        $twig   = new \Twig\Environment($loader, $options);
+        $loader     = new FilesystemLoader($path);
+        $twig       = new \Twig\Environment($loader, $options);
         $this->html = $twig->render($filename, $context);
         $this->email->html($this->html);
         return $this;
@@ -209,11 +209,13 @@ class GmailSender
         return $this;
     }
 
+
     /**
-     * @return mixed
-     * @throws \Exception
+     * 发送
+     * @return bool
+     * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
      */
-    public function Send()
+    public function Send(): bool
     {
         if (empty($this->to) && empty($this->replyTo)) {
             throw new \Exception("Lack of recipients");
@@ -228,7 +230,11 @@ class GmailSender
         if (empty($this->subject)) {
             $this->setSubject("This is a test email, without the theme of email.");
         }
-
-        return $this->mailer->send($this->email);
+        try {
+            $this->mailer->send($this->email);
+        } catch (\Exception $exception) {
+            throw new \Exception($exception->getMessage());
+        }
+        return true;
     }
 }
