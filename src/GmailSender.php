@@ -179,9 +179,7 @@ class GmailSender
     {
         $loader     = new FilesystemLoader($path);
         $twig       = new \Twig\Environment($loader, $options);
-        $this->html = $twig->render($filename, $context);
-        $this->email->html($this->html);
-        return $this;
+        return $this->setHtml($twig->render($filename, $context));
     }
 
     /**
