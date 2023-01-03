@@ -7,10 +7,10 @@
    > ****
    >
    > 1. > thinkphp配置
-   >    >
-   >    > ****
-   >    >
-   >    > ```php
+        >    >
+        >    > ****
+        >    >
+        >    > ```php
    >    > //在config/kaadon中添加如下配置
    >    > "phpmailer" => [
    >    >   "gmail" => [
