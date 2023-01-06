@@ -3,21 +3,19 @@
 
 
 1. > 配置
-   >
    > ****
-   >
    > 1. > thinkphp配置
-        >    >
-        >    > ****
-        >    >
-        >    > ```php
+   >    >
+   >    > ****
+   >    >
+   >    > ```php
    >    > //在config/kaadon中添加如下配置
-   >    > "phpmailer" => [
-   >    >   "gmail" => [
-   >    >     "username" => "",
-   >    >     "password" => ""
-   >    >   ]
-   >    > ]
+   >    >     "phpmailer" => [
+   >    >         "gmail" => [
+   >    >             "username" => "",
+   >    >             "password" => ""
+   >    >         ]
+   >    >     ]
    >    > // thinkphp中使用 Kaadon\PhpMailer\think\ThinkGmail 类
    >    > // 增加了 sendTemplateVerificationCode 发送方法,使用数据见 example
    >    > ```
