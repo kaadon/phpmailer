@@ -3,67 +3,84 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <title>{{server.member}}</title>
+    <title>{{title}}</title>
     <link rel="Shortcut Icon" href="https://static.boolcdn.net/ico/kaadon/favicon.ico" type="image/x-icon"/>
 </head>
 <body>
+<!--
+{
+    "logo":"https://statics.boolcdn.net/logo/kaadon/icon_512x512@2x.png",
+    "title":"你正在进行登录认证",
+    "code":"012356",
+    "text_title":"你正在进行登录操作,你的账户为:usdtcloud@gmail.com, 请及时输入验证码进行验证",
+    "text_identify":"Use this code to complete the login verification operation",
+    "text_hint":"This code will expire in 24 hours",
+    "text_important_hint":"您收到了此电子邮件，此电子邮件对于您非常重要!请不要告诉他人",
+    "text_reply_hint":"此邮件为系统邮件,请勿回复",
+}
+-->
 <div style="margin:0;padding:0" bgcolor="#FFFFFF">
-    <table width="100%" height="100%" style="min-width:348px" border="0" cellspacing="0" cellpadding="0" lang="zh">
-        <tbody>
-        <tr height="32" style="height:32px">
-            <td></td>
-        </tr>
-        <tr align="center">
-            <td>
-                <div>
-                    <div></div>
-                </div>
-                <table border="0" cellspacing="0" cellpadding="0"
-                       style="padding-bottom:20px;max-width:516px;min-width:220px">
-                    <tbody>
-                    <tr>
-                        <td width="8" style="width:8px"></td>
-                        <td>
-                            <div style="border-style:solid;border-width:thin;border-color:#dadce0;border-radius:8px;padding:40px 20px"
-                                 align="center" class="m_2433147444603902245mdv2rw"><img
-                                    src="https://static.boolcdn.net/logo/kaadon/icon_128x128.png"
-                                    width="48" height="48" aria-hidden="true" style="margin-bottom:16px" alt="Google"
-                                    class="CToWUd" data-bit="iit">
-                                <div style="font-family:'Google Sans',Roboto,RobotoDraft,Helvetica,Arial,sans-serif;border-bottom:thin solid #dadce0;color:rgba(0,0,0,0.87);line-height:32px;padding-bottom:24px;text-align:center;word-break:break-word">
-                                    <div style="font-size:24px">请验证您的辅助邮箱</div>
-                                </div>
-                                <div style="font-family:Roboto-Regular,Helvetica,Arial,sans-serif;font-size:14px;color:rgba(0,0,0,0.87);line-height:20px;padding-top:20px;text-align:left">
-                                    Google 收到了将 <a style="font-weight:bold">kaadon.com@gmail.com</a> 用作 Google 帐号 <a
-                                        style="font-weight:bold">yueting.com@gmail.com</a> 的辅助邮箱的请求。<br><br>请使用此验证码完成该辅助邮箱的设置：<br>
-                                    <div style="text-align:center;font-size:36px;margin-top:20px;line-height:44px">
-                                        320514
+    <div style="margin:0;padding:0" bgcolor="#FFFFFF">
+        <table width="100%" height="100%" style="min-width:348px" border="0" cellspacing="0" cellpadding="0" lang="en">
+            <tbody>
+            <tr height="32" style="height:32px">
+                <td></td>
+            </tr>
+            <tr align="center">
+                <td>
+                    <div>
+                        <div></div>
+                    </div>
+                    <table border="0" cellspacing="0" cellpadding="0"
+                           style="padding-bottom:20px;max-width:516px;min-width:220px">
+                        <tbody>
+                        <tr>
+                            <td width="8" style="width:8px"></td>
+                            <td>
+                                <div style="border-style:solid;border-width:thin;border-color:#dadce0;border-radius:8px;padding:40px 20px"
+                                     align="center" class="m_7416526542692850598mdv2rw"><img
+                                        src="{{logo}}"
+                                        height="50" aria-hidden="true" style="margin-bottom:16px"
+                                        alt="{{text_title}}" class="CToWUd" data-bit="iit">
+                                    <div style="font-family:'Google Sans',Roboto,RobotoDraft,Helvetica,Arial,sans-serif;border-bottom:thin solid #dadce0;color:rgba(0,0,0,0.87);line-height:32px;padding-bottom:24px;text-align:center;word-break:break-word">
+                                        <div style="font-size:24px">{{title}}</div>
                                     </div>
-                                    <br>此验证码将在 24 小时后失效。<br><br>如果您不认识 <a
-                                        style="font-weight:bold">yueting.com@gmail.com</a>，
-                                    <wbr>
-                                    可以放心地忽略这封电子邮件。
+                                    <div style="font-family:Roboto-Regular,Helvetica,Arial,sans-serif;font-size:14px;color:rgba(0,0,0,0.87);line-height:20px;padding-top:20px;text-align:left">
+                                        {{text_title}}.<br><br>
+                                        {{text_identify}}:<br>
+                                        <div style="color:rgba(255,0,0,0.8);text-align:center;font-size:36px;margin-top:20px;line-height:44px">
+                                            {{code}}
+                                        </div>
+                                        <div>
+                                            <p style="text-align: center;color: grey">
+                                                {{text_hint}}.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div style="text-align:left">
-                                <div style="font-family:Roboto-Regular,Helvetica,Arial,sans-serif;color:rgba(0,0,0,0.54);font-size:11px;line-height:18px;padding-top:12px;text-align:center">
-                                    <div>我们向您发送这封电子邮件，目的是让您了解关于您的 Google 帐号和服务的重大变化。</div>
-                                    <div style="direction:ltr">© 2022 Google LLC, <a class="m_2433147444603902245afal"
-                                                                                     style="font-family:Roboto-Regular,Helvetica,Arial,sans-serif;color:rgba(0,0,0,0.54);font-size:11px;line-height:18px;padding-top:12px;text-align:center">1600
-                                        Amphitheatre Parkway, Mountain View, CA 94043, USA</a></div>
+                                <div style="text-align:left">
+                                    <div style="font-family:Roboto-Regular,Helvetica,Arial,sans-serif;color:rgba(0,0,0,0.54);font-size:11px;line-height:18px;padding-top:12px;text-align:center">
+                                        <div style="color: red">
+                                            {{text_important_hint}}.
+                                        </div>
+                                        <div style="direction:ltr;color: grey">
+                                            {{text_reply_hint}}.
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td width="8" style="width:8px"></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-        <tr height="32" style="height:32px">
-            <td></td>
-        </tr>
-        </tbody>
-    </table>
+                            </td>
+                            <td width="8" style="width:8px"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr height="32" style="height:32px">
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>
