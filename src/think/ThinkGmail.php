@@ -11,6 +11,7 @@ use think\facade\Config;
 class ThinkGmail extends GmailSender
 {
     protected static $instance;
+
     /**
      * @param array $config
      * @throws \Exception
@@ -19,17 +20,21 @@ class ThinkGmail extends GmailSender
     {
         parent::__construct($config);
     }
-    public static function instance(){
-        if(is_null(self::$instance)){
+
+    public static function instance()
+    {
+        if (is_null(self::$instance)) {
             $config = [];
             if (Config::has("kaadon.phpmailer.gmail")) {
                 $config = Config::get("kaadon.phpmailer.gmail");
             }
-            if (!isset($config['username'])) throw new Exception("Key does not exist");
-            self::$instance= new static($config);
+            if (!isset($config['username']) || !isset($config['password'])) throw new Exception("Username or password does not exist");
+            if (empty($config['username']) || empty($config['password'])) throw new Exception("The username or password are not configured, please check the configuration file");
+            self::$instance = new static($config);
         }
         return self::$instance;
     }
+
     /**
      * 设置发送模板
      * @param string $code
@@ -66,7 +71,7 @@ class ThinkGmail extends GmailSender
             "text_important_hint" => $text_important_hint,
             "text_reply_hint"     => $text_reply_hint,
         ];
-        $this->setTwigTemplates("/Volumes/SourceData/composer/phpmailer/twig_templates", "vercode.html", $context);
+        $this->setTwigTemplates(dirname(__FILE__) . "/../../twig_templates", "vercode.html", $context);
         return $this;
     }
 }
