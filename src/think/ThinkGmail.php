@@ -3,12 +3,14 @@
 namespace Kaadon\PhpMailer\think;
 
 use Kaadon\PhpMailer\GmailSender;
+use think\facade\Config;
 
 /**
  *
  */
 class ThinkGmail extends GmailSender
 {
+    protected static $instance;
     /**
      * @param array $config
      * @throws \Exception
@@ -17,7 +19,17 @@ class ThinkGmail extends GmailSender
     {
         parent::__construct($config);
     }
-
+    public static function instance(){
+        if(is_null(self::$instance)){
+            $config = [];
+            if (Config::has("kaadon.phpmailer.gmail")) {
+                $config = Config::get("kaadon.phpmailer.gmail");
+            }
+            if (!isset($config['username'])) throw new Exception("Key does not exist");
+            self::$instance= new static($config);
+        }
+        return self::$instance;
+    }
     /**
      * @param string $code
      * @param string $title

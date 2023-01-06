@@ -1,7 +1,7 @@
 <?php
 
 return [
-    "email" => [
+    "phpmailer" => [
         "gmail" => [
             "username" => "",
             "password" => ""
