@@ -31,6 +31,7 @@ class ThinkGmail extends GmailSender
         return self::$instance;
     }
     /**
+     * 设置发送模板
      * @param string $code
      * @param string $title
      * @param string $text_title
